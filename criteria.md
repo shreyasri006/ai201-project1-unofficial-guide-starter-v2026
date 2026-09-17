@@ -23,8 +23,10 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
+The five questions cover different parts of the campus-life corpus, and each
+asks for a specific fact rather than a broad opinion. I allow one miss because
+retrieval can still struggle with a less common phrase, but four successful
+questions would show that the index is useful for the main test set.
 
 ---
 
@@ -33,8 +35,10 @@ contains the answer.
 Every answer the system produces names at least one source document.
 
 **Why this target:**
-<!-- Why all five and not four? What about your setup makes that achievable —
-     or what would have to go wrong for it not to be? -->
+The answer pipeline receives the source filename with every retrieved chunk,
+and the questions are all grounded in the indexed corpus. Naming a source for
+all five answers should therefore be achievable; a missing source would point
+to an answer-format or generation problem rather than a lack of documents.
 
 ---
 
@@ -50,47 +54,40 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
-<!-- What did your distances look like when you set the cutoff in Milestone 4?
-     Was there a clean gap, or did the two groups overlap? -->
+The out-of-scope questions are about unrelated topics such as Mongolia, Rust,
+and engine maintenance, while the selected corpus is about university life.
 
 ---
 
 ## 4. Something about your chunks
 
-<!-- YOU WRITE THIS ONE.
-
-     How would you know if your chunks were the right size? Name something
-     countable or observable.
-
-     Examples of the right shape — don't copy these, they should come from
-     what you actually saw in Milestone 3:
-       - "At least 4 of 5 sampled chunks read as a complete thought, with no
-          sentence cut in half at either end."
-       - "No chunk is shorter than 200 characters, since anything below that
-          in my corpus turned out to be a heading with no content under it." -->
+At least 4 of 5 sampled chunks will read as a complete thought, with no
+sentence cut in half at either end.
 
 
 
 **Why this target:**
-
+The campus-life documents are mostly one to three short paragraphs, and useful
+information often sits in a single sentence. Preserving complete thoughts is
+more important here than forcing every chunk to reach the configured character
+limit, while allowing one imperfect sample accounts for an occasional boundary
+case.
 
 
 ---
 
 ## 5. Your choice
 
-<!-- YOU WRITE THIS ONE TOO.
-
-     Pick something you actually care about getting right. It could be about
-     speed, about refusals, about a particular kind of question your corpus
-     handles badly, about source attribution being correct rather than merely
-     present — anything, as long as it names a number or an observable
-     outcome. -->
+For all 5 in-scope questions, the cited source document will contain the fact
+used to support the answer, not merely be a document returned by retrieval.
 
 
 
 **Why this target:**
-
+Source names are useful only when they let a reader verify the answer. The
+questions each ask for a concrete fact, so checking the cited document is
+possible; requiring all five keeps attribution reliable across the full test
+set rather than accepting plausible-looking but unsupported citations.
 
 
 ---
