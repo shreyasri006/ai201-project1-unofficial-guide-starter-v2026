@@ -30,11 +30,11 @@ The goal is to retrieve the relevant campus life document and answer with a clea
 **Chunk size:** 800 characters
 **Overlap:** 120 characters
 
-I kept the default chunker for Unit 1 because the campus-life documents are mostly short posts, often one paragraph or one short set of paragraphs, and useful facts are usually contained in a single sentence or a compact block of prose. A chunk size that large is not harmful here because most pages are short enough to stay intact, and the overlap helps keep adjacent facts from being split apart when a sentence crosses a boundary. The main concern in this corpus is preserving complete thoughts rather than aggressively cutting text into tiny pieces.
+I kept the default chunker for Unit 1 because the campus life documents are mostly short posts, often one paragraph and useful facts are usually contained in a single sentence. A chunk size that large is not harmful here because most pages are short enough to stay intact. The overlap helps keep adjacent facts from being split apart when a sentence crosses a boundary.
 
 ## Sample Chunks
 
-**Chunk 1** — source: `admin_add_drop_deadline.txt#0` — produced by: `chunker.py::fallback_split`
+**Chunk 1** — source: admin_add_drop_deadline.txt#0 — produced by: chunker.py::fallback_split
 
 ```
 On the add/drop deadline
