@@ -1,4 +1,12 @@
-def judge(question: str, expects: str, answer: str, results: str) -> bool :
+import re
+
+STOP_WORDS = {
+    "a", "an", "and", "as", "at", "be", "by", "during", "for", "in", "is",
+    "of", "on", "or", "the", "to",
+}
+
+
+def judge(question: str, expects: str, answer: str, results: str) -> bool:
     """
     Judge the answer against the correct answer.
 
@@ -15,6 +23,13 @@ def judge(question: str, expects: str, answer: str, results: str) -> bool :
     # print(f"Results: {results}")
     # return False
 
-    if not expects:
+    if not expects or not answer:
         return False
-    return expects.strip().lower() in (answer or "").lower()
+
+    expected_tokens = [
+        token
+        for token in re.findall(r"\$?\d+(?:\.\d+)?|[a-z]+", expects.lower())
+        if token not in STOP_WORDS
+    ]
+    answer_tokens = set(re.findall(r"\$?\d+(?:\.\d+)?|[a-z]+", answer.lower()))
+    return all(token in answer_tokens for token in expected_tokens)
