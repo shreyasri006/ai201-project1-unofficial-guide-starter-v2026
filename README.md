@@ -195,11 +195,11 @@ Evidence from `results/run_2026-09-23_1738.md`, produced by
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunks contain the answer | MET | The retrieved source lists included the document containing the answer for all five in-scope questions, so the 4-of-5 target was met in every run. |
+| 2 | Every answer names a source | MET | Each generated answer in the baseline transcript included a source filename, meeting the 5-of-5 target. |
+| 3 | Gate stops out-of-corpus questions | MET | The relevance gate refused all five out-of-corpus questions, exceeding the target of 4 of 5. |
+| 4 | Sampled chunks are complete thoughts | MET | All five Unit 1 samples were readable complete thoughts without a sentence cut at either end. |
+| 5 | Cited sources contain the supporting facts | MET | The cited documents contained the facts used in all five answers, meeting the 5-of-5 target. |
 
 ## Diagnoses
 
@@ -220,6 +220,13 @@ Evidence from `results/run_2026-09-23_1738.md`, produced by
      low, and which one you'd tighten and to what.
 
      Milestone 3. -->
+
+No criterion was missed in the baseline evidence, so there is no failure to
+assign to loading, chunking, embedding, retrieval, or generation. The weakest
+target is criterion 1: the five questions all retrieved useful source
+documents, but the target allowed one of five questions to fail. I would
+tighten it to 5 of 5 for the next evaluation because these questions ask for
+specific facts that are present in the corpus.
 
 ## The Improvement
 
