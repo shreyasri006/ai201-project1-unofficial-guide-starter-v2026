@@ -147,15 +147,40 @@ I measured the best distance for five in-corpus questions and five out-of-scope 
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunks contain the answer | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 4. Sampled chunks are complete thoughts | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 5. Cited sources contain the supporting facts | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+Evidence from `results/run_2026-09-23_1738.md`, produced by
+`run_eval.py::main` and `run_eval.py::check_out_of_scope`:
+
+- Criterion 1: the retrieved sources included `admin_housing_lottery.txt`,
+     `housing_innisfree_hall.txt`, `admin_meal_plan_changes.txt`,
+     `housing_aldridge_hall_laundry.txt`, and `admin_pass_fail_option.txt`, which
+     contain the answers to the five in-scope questions.
+- Criterion 2: representative generated output was:
+
+     ```
+     In Innisfree Hall, laundry costs $1.75 to wash and $1.75 to dry.
+
+     Source: housing_innisfree_hall.txt (also found in housing_innisfree_hall_laundry.txt)
+     ```
+
+- Criterion 3: `run_eval.py::check_out_of_scope` reported `Refused 5 of 5`.
+     The best distances were 0.825, 0.934, 0.886, 0.844, and 0.896, all above
+     the 0.6 cutoff.
+- Criterion 4: the five sampled chunks in Unit 1 each preserved a complete
+     thought and were produced by `chunker.py::fallback_split`.
+- Criterion 5: the generated answers cited source documents containing the
+     supporting facts, including `admin_housing_lottery.txt`,
+     `housing_innisfree_hall.txt`, `admin_meal_plan_changes.txt`,
+     `housing_aldridge_hall_laundry.txt`, and `admin_pass_fail_option.txt`.
 
 ## Verdicts
 
